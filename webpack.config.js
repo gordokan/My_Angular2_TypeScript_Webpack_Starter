@@ -5,15 +5,20 @@ const webpack = require('webpack');
 module.exports = {
   context: __dirname + '/src',
   entry: {
-    app: './app.js'
+    app: './entry.app.ts'
   },
   output: {
     path: __dirname + '/dist',
     filename: '[name].bundle.js',
+    sourceMapFilename: '[name].map',
     publicPath: '/assets'
   },
   devServer: {
     contentBase: __dirname + '/src'
+  },
+  devtool: 'cheap-module-source-map',
+  resolve: {
+    extensions: ['.ts', '.js', '.json']
   },
   module: {
     rules: [
@@ -22,6 +27,12 @@ module.exports = {
         use: [{
           loader: "babel-loader",
           options: { presets: ["es2015"] }
+        }]
+      },
+      {
+        test: /\.ts$/,
+        use:[{
+          loader: 'awesome-typescript-loader'
         }]
       },
       {
