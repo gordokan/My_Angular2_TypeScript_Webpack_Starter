@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'app',
     template: `<div>
-        <meals></meals>
+        <sample-component></sample-component>
     </div>`
 })
 export class AppComponent {
